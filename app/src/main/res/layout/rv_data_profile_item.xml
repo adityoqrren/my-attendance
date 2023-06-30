@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    android:layout_marginTop="12dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:id="@+id/frag_profile_photo_1"
+            android:orientation="vertical"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@color/blue_light_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/frag_profile_title_a_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="No Karyawan"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/frag_profile_title_b_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/frag_profile_photo_1"
+            app:layout_constraintTop_toTopOf="@+id/frag_profile_photo_1"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/frag_profile_title_b_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="NIK ************"
+            app:layout_constraintBottom_toBottomOf="@+id/frag_profile_photo_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/frag_profile_title_a_1"
+            app:layout_constraintTop_toBottomOf="@+id/frag_profile_title_a_1" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

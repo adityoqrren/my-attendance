@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "267207813445",
+    "firebase_url": "https://attendancedb-ec994-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "attendancedb-ec994",
+    "storage_bucket": "attendancedb-ec994.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267207813445:android:8a82cee5b46fd934ae362c",
+        "android_client_info": {
+          "package_name": "com.example.myattendance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "267207813445-dt3g5mqb8qulgjllug3acn853ud8r2s7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDa2qVQbEZ4chokNi9m8VDgZVK5mOx2VQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "267207813445-dt3g5mqb8qulgjllug3acn853ud8r2s7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267207813445:android:ec9c68f31844d27cae362c",
+        "android_client_info": {
+          "package_name": "com.example.phinconattendance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "267207813445-dt3g5mqb8qulgjllug3acn853ud8r2s7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDa2qVQbEZ4chokNi9m8VDgZVK5mOx2VQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "267207813445-dt3g5mqb8qulgjllug3acn853ud8r2s7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

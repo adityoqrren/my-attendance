@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.history.HistoryFragment"
+    android:background="@color/grey_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="317dp"
+        android:background="@color/blue_darker"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/frag_home_decor_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/oval_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/text_home"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:text="@string/title_home"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textSize="32sp"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/text_home_bottom"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:text="@string/title_home"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textSize="70sp"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent" />-->
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frag_home_constraint_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/status_bar_height"
+        android:paddingHorizontal="17dp">
+
+        <TextView
+            android:id="@+id/frag_home_title_top"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Attendance History"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/frag_home_notif_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/notification_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/frag_home_title_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/frag_home_title_top" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/frag_home_card_check"
+            android:background="@drawable/rectangle_left_right_top"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="37dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/frag_home_title_top">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/frag_home_hour_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="23dp"
+                    android:text="Logs"
+                    android:textAlignment="center"
+                    android:textColor="@color/black_text_2"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+<!--                <Button-->
+<!--                    android:id="@+id/mybutton1"-->
+<!--                    style="@style/ShapeAppearance.App.SmallComponent"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="17dp"-->
+<!--                    android:backgroundTint="@color/blue_light_background"-->
+<!--                    android:minHeight="0dp"-->
+<!--                    android:minWidth="0dp"-->
+<!--                    android:paddingVertical="4dp"-->
+<!--                    android:text="Day"-->
+<!--                    android:textColor="@color/blue_darker"-->
+<!--                    android:layout_marginTop="12dp"-->
+<!--                    app:layout_constraintEnd_toStartOf="@+id/mybutton2"-->
+<!--                    app:layout_constraintHorizontal_bias="0.5"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/frag_home_hour_txt"-->
+<!--                    app:shapeAppearanceOverlay="@style/ShapeAppearance.App.SmallComponent" />-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/mybutton2"-->
+<!--                    style="@style/ShapeAppearance.App.SmallComponent"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:backgroundTint="@color/white"-->
+<!--                    android:minHeight="0dp"-->
+<!--                    android:minWidth="0dp"-->
+<!--                    android:paddingVertical="4dp"-->
+<!--                    android:text="Week"-->
+<!--                    android:textColor="@color/grey_text"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/mybutton1"-->
+<!--                    app:layout_constraintEnd_toStartOf="@+id/mybutton3"-->
+<!--                    app:layout_constraintHorizontal_bias="0.5"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/mybutton1"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/mybutton1"-->
+<!--                    app:shapeAppearanceOverlay="@style/ShapeAppearance.App.SmallComponent" />-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/mybutton3"-->
+<!--                    style="@style/ShapeAppearance.App.SmallComponent"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:backgroundTint="@color/white"-->
+<!--                    android:minHeight="0dp"-->
+<!--                    android:minWidth="0dp"-->
+<!--                    android:paddingVertical="4dp"-->
+<!--                    android:text="Month"-->
+<!--                    android:textColor="@color/grey_text"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/mybutton2"-->
+<!--                    app:layout_constraintEnd_toStartOf="@+id/mybutton4"-->
+<!--                    app:layout_constraintHorizontal_bias="0.5"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/mybutton2"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/mybutton2"-->
+<!--                    app:shapeAppearanceOverlay="@style/ShapeAppearance.App.SmallComponent" />-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/mybutton4"-->
+<!--                    style="@style/ShapeAppearance.App.SmallComponent"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:backgroundTint="@color/white"-->
+<!--                    android:minHeight="0dp"-->
+<!--                    android:minWidth="0dp"-->
+<!--                    android:paddingVertical="4dp"-->
+<!--                    android:text="Year"-->
+<!--                    android:textColor="@color/grey_text"-->
+<!--                    android:layout_marginEnd="17dp"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/mybutton3"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintHorizontal_bias="0.5"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/mybutton3"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/mybutton3"-->
+<!--                    app:shapeAppearanceOverlay="@style/ShapeAppearance.App.SmallComponent" />-->
+
+                <RadioGroup
+                    android:id="@+id/frag_history_radio_filter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:layout_marginTop="14dp"
+                    app:layout_constraintTop_toBottomOf="@+id/frag_home_hour_txt"
+                    app:layout_constraintStart_toStartOf="parent">
+                    <RadioButton
+                        android:id="@+id/frag_history_f1"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:paddingVertical="8dp"
+                        android:minHeight="0dp"
+                        android:background="@drawable/radio_selector"
+                        android:button="@drawable/null_radio_button"
+                        android:textColor="@drawable/radio_text_selector"
+                        android:textStyle="bold"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:text="Day"/>
+                    <RadioButton
+                        android:id="@+id/frag_history_f2"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:paddingVertical="8dp"
+                        android:minHeight="0dp"
+                        android:background="@drawable/radio_selector"
+                        android:button="@drawable/null_radio_button"
+                        android:textColor="@drawable/radio_text_selector"
+                        android:textStyle="bold"
+                        android:checked="false"
+                        android:gravity="center"
+                        android:text="Week"/>
+                    <RadioButton
+                        android:id="@+id/frag_history_f3"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:paddingVertical="8dp"
+                        android:minHeight="0dp"
+                        android:background="@drawable/radio_selector"
+                        android:button="@drawable/null_radio_button"
+                        android:textColor="@drawable/radio_text_selector"
+                        android:textStyle="bold"
+                        android:checked="false"
+                        android:gravity="center"
+                        android:text="Month"/>
+                    <RadioButton
+                        android:id="@+id/frag_history_f4"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="8dp"
+                        android:minHeight="0dp"
+                        android:background="@drawable/radio_selector"
+                        android:button="@drawable/null_radio_button"
+                        android:textColor="@drawable/radio_text_selector"
+                        android:textStyle="bold"
+                        android:checked="false"
+                        android:gravity="center"
+                        android:text="Year"/>
+                </RadioGroup>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/frag_history_rv_items"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    tools:listitem="@layout/rv_location_item"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frag_history_radio_filter" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--        <TextView-->
+<!--            android:id="@+id/frag_home_title_location"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Location"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="@color/black_text_2"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_marginTop="13dp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/frag_home_card_check" />-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/frag_home_rv_location"-->
+<!--            tools:listitem="@layout/rv_location_item"-->
+<!--            tools:itemCount="3"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/frag_home_title_location" />-->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
