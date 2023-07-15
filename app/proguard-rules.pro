@@ -19,3 +19,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keepclassmembers class com.example.myattendance.datamodel.User {
+    public <init>();
+}
+-keepclassmembers class com.example.myattendance.datamodel.EmployeeData {
+    public <init>();
+}

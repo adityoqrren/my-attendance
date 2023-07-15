@@ -97,8 +97,20 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/frag_profile_photo" />
 
+
                 <TextView
-                    android:id="@+id/frag_profile_profession"
+                    android:id="@+id/frag_profile_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="nanangsupriatna@gmail.com"
+                    android:textColor="@color/grey_text"
+                    android:layout_marginTop="9dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frag_profile_name" />
+
+                <TextView
+                    android:id="@+id/frag_profile_position"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Programmer"
@@ -107,7 +119,7 @@
                     android:layout_marginTop="9dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/frag_profile_name" />
+                    app:layout_constraintTop_toBottomOf="@+id/frag_profile_email" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
@@ -166,14 +178,14 @@
                     android:layout_marginStart="20dp"
                     android:text="No Karyawan"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/frag_profile_title_b_1"
+                    app:layout_constraintBottom_toTopOf="@+id/frag_profile_employee_id"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/frag_profile_photo_1"
                     app:layout_constraintTop_toTopOf="@+id/frag_profile_photo_1"
                     app:layout_constraintVertical_chainStyle="packed" />
 
                 <TextView
-                    android:id="@+id/frag_profile_title_b_1"
+                    android:id="@+id/frag_profile_employee_id"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="16711111111111"
@@ -227,14 +239,14 @@
                     android:layout_marginStart="20dp"
                     android:text="Alamat"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/frag_profile_title_b_2"
+                    app:layout_constraintBottom_toTopOf="@+id/frag_profile_employee_address"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/frag_profile_photo_2"
                     app:layout_constraintTop_toTopOf="@+id/frag_profile_photo_2"
                     app:layout_constraintVertical_chainStyle="packed" />
 
                 <TextView
-                    android:id="@+id/frag_profile_title_b_2"
+                    android:id="@+id/frag_profile_employee_address"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Jakarta Selatan"
@@ -258,6 +270,7 @@
             app:layout_constraintTop_toBottomOf="@+id/frag_profile_card_data_2">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/frag_profile_change_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp">

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/welcome">
+    app:startDestination="@id/welcome_fragment">
 
 <!--    <fragment-->
 <!--        android:id="@+id/splash_screen"-->
@@ -18,7 +18,7 @@
 <!--            />-->
 <!--    </fragment>-->
     <fragment
-        android:id="@+id/welcome"
+        android:id="@+id/welcome_fragment"
         android:name="com.example.myattendance.WelcomeScreenFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome">
@@ -33,6 +33,7 @@
         android:id="@+id/loginFragment"
         android:name="com.example.myattendance.LoginFragment"
         android:label="fragment_login"
+        app:launchSingleTop="true"
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_dashboardActivity"

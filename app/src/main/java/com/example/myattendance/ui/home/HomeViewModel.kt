@@ -150,6 +150,7 @@ class HomeViewModel : ViewModel() {
         val key = myCheckData.push()
         if(checkState.value!=null){
             //CHECK OUT
+            //add data check out to check_data
             val checkDataCheckOut = checkState.value?.let {
                 //CheckLogData(it.id_user, locationSelected!!, 1, getTimeNow())
                 CheckData(it.id_user,it.location,1, getTimeNow(),"${firebaseAuth.uid}_$timeNowEpoch")

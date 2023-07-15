@@ -7,12 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.myattendance.datamodel.User
 import com.example.myattendance.databinding.FragmentRegisterBinding
+import com.example.myattendance.datamodel.EmployeeData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
@@ -20,6 +26,7 @@ class RegisterFragment : Fragment() {
     private var _binding : FragmentRegisterBinding? = null
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
+    private lateinit var queryValueListener: ValueEventListener
     lateinit var databaseRef : DatabaseReference
 
     override fun onCreateView(
@@ -36,12 +43,17 @@ class RegisterFragment : Fragment() {
         auth = Firebase.auth
         databaseRef = Firebase.database.reference
 
+        val employeeEmail = binding.fragRegisterEmailEt.text
         val username = binding.fragRegisterUsernameEt.text
         val fullname = binding.fragRegisterFullnameEt.text
         val password = binding.fragRegisterPasswordEt.text
         val repeatPassword = binding.fragRegisterRepeat.text
 
         binding.fragRegisterBtnRegister.setOnClickListener {
+            if(employeeEmail.isNullOrEmpty()){
+                Toast.makeText(requireContext(),"fill the username please",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             if(username.isNullOrEmpty()){
                 Toast.makeText(requireContext(),"fill the username please",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -64,33 +76,72 @@ class RegisterFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            auth.createUserWithEmailAndPassword(username.toString().trim(), password.toString()).addOnCompleteListener(requireActivity()){
-                task ->
-                if(task.isSuccessful){
-                    val user = auth.currentUser
-                    val uid = user?.uid
-                    Log.d("REGISTER FIREBASE", "createUserWithEmail:success $uid")
-                    createUser(uid as String, username.toString(), fullname.toString())
-                    val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
-                    action.registerToLogin = uid
-                    findNavController().navigate(action)
-                }else{
-                    Log.w("REGISTER FIREBASE", "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(requireContext(), "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                }
-            }
+            //check to employeeData, is there any data that has the same email and fullname?
+            //if yes, create user with firebase auth
+            //if no, show a dialog that explain email or fullname not match to employee data
+            queryValueListener = databaseRef.child("employee_data").orderByChild("email").equalTo(employeeEmail.toString())
+                .addValueEventListener(
+                object: ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if(snapshot.exists()){
+                            //Log.d("check employee snapshot","${snapshot.value}")
+                            val firstData = snapshot.children.first()
+                            //Log.d("check employee firstData","${firstData.value}")
+                            val employeeFullname = firstData.child("fullname").value as String
+                            if(fullname.toString()==employeeFullname){
+//                                Toast.makeText(requireContext(),"email and fullname match",Toast.LENGTH_LONG).show()
+                                val employeeID = firstData.child("employee_id").value as String
+                                val email = firstData.child("email").value as String
+                                val address = firstData.child("address").value as String
+                                val position = firstData.child("position").value as String
+                                auth.createUserWithEmailAndPassword(employeeEmail.toString().trim(), password.toString()).addOnCompleteListener(requireActivity()){
+                                    task ->
+                                    if(task.isSuccessful){
+                                        val user = auth.currentUser
+                                        val uid = user?.uid
+                                        Log.d("REGISTER FIREBASE", "createUserWithEmail:success $uid")
+                                        val employeeDataObj = EmployeeData(employeeID,address,email,employeeFullname,position)
+                                        createUser(uid as String, username.toString(), employeeDataObj)
+                                        val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
+                                        action.registerToLogin = uid
+                                        findNavController().navigate(
+
+                                            action,
+
+                                            //Pass the fragment id where you want to land on the back press at fragmentC,
+                                            //true/false, in case you want to remove the fragmentA from the back stack use the TRUE and vice versa
+                                            NavOptions.Builder().setPopUpTo(R.id.welcome_fragment, false).build()
+                                        )
+                                    }else{
+                                        //Log.w("REGISTER FIREBASE", "createUserWithEmail:failure ${task.exception?.message}")
+                                        Toast.makeText(requireContext(), "Authentication failed. ${task.exception?.localizedMessage}",
+                                            Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                            }else{
+                                Toast.makeText(requireContext(),"fullname is wrong",Toast.LENGTH_LONG).show()
+                            }
+                        }else{
+                            Toast.makeText(requireContext(),"email is not registered as employee email",Toast.LENGTH_LONG).show()
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.d("register error","$error")
+                    }
+            })
 
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        databaseRef.removeEventListener(queryValueListener);
     }
 
-    fun createUser(uid:String, username:String, fullname:String){
+    fun createUser(uid:String, username:String, employeeData:EmployeeData){
         //make data
-        val user = User(username,fullname)
+        val user = User(username,employeeData)
         //set data to field
         databaseRef.child("users").child(uid).setValue(user)
     }

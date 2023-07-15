@@ -31,14 +31,14 @@
             android:layout_marginStart="20dp"
             android:text="No Karyawan"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/frag_profile_title_b_1"
+            app:layout_constraintBottom_toTopOf="@+id/frag_profile_employee_id"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/frag_profile_photo_1"
             app:layout_constraintTop_toTopOf="@+id/frag_profile_photo_1"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/frag_profile_title_b_1"
+            android:id="@+id/frag_profile_employee_id"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="NIK ************"

@@ -1,8 +1,15 @@
 package com.example.myattendance.datamodel
 
+import com.google.firebase.database.IgnoreExtraProperties
+import com.google.firebase.database.PropertyName
+
+@IgnoreExtraProperties
 data class User(
-    var username: String = "",
-    var fullname: String = "",
+
+    @PropertyName("username")
+    var username: String? = null,
+    @PropertyName("employee_data")
+    var employeeData: EmployeeData? = null
 
 //    @Exclude
 //    fun toMap(): Map<String, Any?> {
@@ -12,4 +19,6 @@ data class User(
 //            "password" to password
 //        )
 //    }
-)
+){
+
+}

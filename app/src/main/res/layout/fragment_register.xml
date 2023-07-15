@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="30dp"
-            android:text="Please fill Fullname, No.KTP, Ship &amp; Password to register your app"
+            android:text="Please fill your employee email, fullname, username and password to register"
             android:textSize="14sp"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -93,13 +93,36 @@
                 app:layout_constraintTop_toBottomOf="@+id/frag_register_username_et" />
 
             <TextView
-                android:id="@+id/frag_login_username_tv"
+                android:id="@+id/frag_register_email_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Employee email"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/frag_register_email_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rectangle_edit_text"
+                android:contentDescription="enter employee email"
+                android:hint="Employee Email"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/frag_register_email_tv"
+                app:layout_constraintTop_toBottomOf="@id/frag_register_email_tv" />
+
+            <TextView
+                android:id="@+id/frag_register_username_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Username"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="@id/frag_register_email_et"
+                app:layout_constraintTop_toBottomOf="@id/frag_register_email_et" />
 
             <EditText
                 android:id="@+id/frag_register_username_et"
@@ -111,8 +134,8 @@
                 android:hint="Username"
                 android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/frag_login_username_tv"
-                app:layout_constraintTop_toBottomOf="@id/frag_login_username_tv" />
+                app:layout_constraintStart_toStartOf="@id/frag_register_username_tv"
+                app:layout_constraintTop_toBottomOf="@id/frag_register_username_tv" />
 
             <TextView
                 android:id="@+id/frag_login_password_tv"
@@ -170,17 +193,15 @@
                 android:id="@+id/frag_register_btn_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginTop="12dp"
                 android:backgroundTint="@color/yellow_app"
                 android:paddingVertical="19dp"
                 android:text="Register"
                 android:textColor="@color/black_text"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/frag_login_text_bottom_1"
                 app:layout_constraintEnd_toEndOf="@+id/frag_register_to_login"
                 app:layout_constraintStart_toStartOf="@+id/frag_login_text_bottom_1"
                 app:layout_constraintTop_toBottomOf="@+id/frag_register_repeat"
-                app:layout_constraintVertical_bias="1.0"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.App.SmallComponent" />
 
             <TextView
@@ -204,7 +225,9 @@
                 app:layout_constraintEnd_toStartOf="@+id/frag_register_to_login"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frag_register_btn_register"
+                app:layout_constraintVertical_bias="1.0" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
