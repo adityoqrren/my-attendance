@@ -25,6 +25,7 @@ class DashboardActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+        navView.itemIconTintList = null
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home, R.id.navigation_history, R.id.navigation_profile

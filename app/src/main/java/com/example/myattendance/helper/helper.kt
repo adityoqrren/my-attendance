@@ -2,8 +2,12 @@ package com.example.myattendance.helper
 
 import androidx.lifecycle.MutableLiveData
 import com.example.myattendance.datamodel.Location_UIModel
+import com.example.myattendance.helper.dateFormat.dateFormatOnlyDateMonthString
+import com.example.myattendance.helper.dateFormat.dateFormatOnlyTime
 import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.time.LocalDateTime
+import java.time.LocalTime
 import java.time.ZoneId
 import java.time.ZoneOffset
 import java.time.ZonedDateTime
@@ -13,6 +17,7 @@ import java.util.*
 object dateFormat {
     val dateFormatOnlyTime = "HH:mm"
     val dateFormatOnlyDate = "dd-MM-yyyy"
+    val dateFormatOnlyDateMonthString = "dd MMMM yyyy"
 }
 
 val locationDummy = Location_UIModel(-1,"","","")
@@ -25,7 +30,7 @@ fun <T> MutableLiveData<T>.mutation(actions: (MutableLiveData<T>) -> Unit) {
 }
 
 //get time now in form string UTC
-fun getTimeNow() : String{
+fun getTimeNowInUTCString() : String{
     val formatDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     formatDate.timeZone = TimeZone.getTimeZone("UTC")
     val formattedDate = formatDate.format(Date())
@@ -66,3 +71,10 @@ fun getTimeAMPM(dateISO: String) : String{
     val jakartaDateTime = zonedDateTime.format(jakartaFormatter)
     return jakartaDateTime
 }
+
+//from localdate to get hour minutes (HH:mm)
+fun timeHourMinutesNow() : String = LocalTime.now().format(DateTimeFormatter.ofPattern(dateFormatOnlyTime))
+
+// from localdate to get date time (xx mm yyyy)
+fun timeDateNow() : String = LocalDate.now().format(DateTimeFormatter.ofPattern(dateFormatOnlyDateMonthString))
+

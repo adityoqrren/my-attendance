@@ -6,8 +6,10 @@ import com.example.myattendance.datamodel.CheckData
 import com.example.myattendance.datamodel.Location
 import com.example.myattendance.datamodel.Location_UIModel
 import com.example.myattendance.datamodel.toLocationUIModel
-import com.example.myattendance.helper.getTimeNow
+import com.example.myattendance.helper.getTimeNowInUTCString
 import com.example.myattendance.helper.mutation
+import com.example.myattendance.helper.timeDateNow
+import com.example.myattendance.helper.timeHourMinutesNow
 import com.example.myattendance.helper.timeNowEpoch
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -15,6 +17,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
@@ -29,8 +33,15 @@ class HomeViewModel : ViewModel() {
     private var _checkState = MutableLiveData<CheckData?>()
     val checkState : MutableLiveData<CheckData?> get() = _checkState
 
+    private var _timeNow = MutableLiveData<String>("00:00")
+    val timeNow : LiveData<String> get() = _timeNow
+
+    private var _dateNow = MutableLiveData<String>("8 Mei 2023")
+    val dateNow : LiveData<String> get() = _dateNow
+
     init {
         getCheckState()
+        updateDateTime()
     }
 
 //    fun getLocFromFirebase(){
@@ -153,7 +164,7 @@ class HomeViewModel : ViewModel() {
             //add data check out to check_data
             val checkDataCheckOut = checkState.value?.let {
                 //CheckLogData(it.id_user, locationSelected!!, 1, getTimeNow())
-                CheckData(it.id_user,it.location,1, getTimeNow(),"${firebaseAuth.uid}_$timeNowEpoch")
+                CheckData(it.id_user,it.location,1, getTimeNowInUTCString(),"${firebaseAuth.uid}_$timeNowEpoch")
             }
             key.setValue(checkDataCheckOut)
                 .addOnCompleteListener {
@@ -166,7 +177,7 @@ class HomeViewModel : ViewModel() {
         }else{
             //CHECK IN
             //add data check-in to check_state then save to check_data
-            val checkStateCheckIn = CheckData(firebaseAuth.uid as String, locationSelected as Location, 0, getTimeNow(),"${firebaseAuth.uid}_$timeNowEpoch")
+            val checkStateCheckIn = CheckData(firebaseAuth.uid as String, locationSelected as Location, 0, getTimeNowInUTCString(),"${firebaseAuth.uid}_$timeNowEpoch")
             myCheckState.setValue(checkStateCheckIn)
                 .addOnCompleteListener {
                     Log.d("setCheckState check-in","success add check_state")
@@ -177,6 +188,17 @@ class HomeViewModel : ViewModel() {
                     Log.d("setCheckState check-in","failed add check_state")
                 }
             //Log.d("setCheckState check_state","${checkState.value}")
+        }
+    }
+
+    fun updateDateTime(){
+        viewModelScope.launch {
+            while (isActive){
+                _timeNow.value = timeHourMinutesNow()
+                _dateNow.value = timeDateNow()
+                //Log.d("check HomeViewModel getTime()","update time ; ${timeHourMinutesNow()}")
+                delay(1000)//update every 1 second
+            }
         }
     }
 }

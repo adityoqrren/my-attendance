@@ -132,11 +132,19 @@ class RegisterFragment : Fragment() {
             })
 
         }
+
+        binding.fragRegisterToLogin.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_registerFragment_to_loginFragment
+            )
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        databaseRef.removeEventListener(queryValueListener);
+        if(::queryValueListener.isInitialized){
+            databaseRef.removeEventListener(queryValueListener)
+        }
     }
 
     fun createUser(uid:String, username:String, employeeData:EmployeeData){

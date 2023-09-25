@@ -71,6 +71,14 @@ class HomeFragment : Fragment(), OnSelectLocationCallback {
                 binding.fragHomeBtnCheck.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),R.color.green_app))
             }
         })
+
+        homeViewModel.timeNow.observe(viewLifecycleOwner,{
+            binding.fragHomeHour.text = it
+        })
+
+        homeViewModel.dateNow.observe(viewLifecycleOwner,{
+            binding.fragHomeDate.text = it
+        })
     }
 
     override fun onDestroyView() {
